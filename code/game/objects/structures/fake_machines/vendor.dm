@@ -22,7 +22,7 @@
 	/// Light color used when theres items inside and we are locked
 	var/lighting_color = "#cf7214"
 	/// Tracking the hawking
-	/var/next_hawk = 0
+	var/next_hawk = 0
 
 /obj/structure/fake_machine/vendor/Initialize()
 	. = ..()
@@ -70,14 +70,6 @@
 		return
 	set_light(1, 1, 1, l_color = lighting_color)
 	. += mutable_appearance(icon, filled_overlay)
-
-/obj/structure/fake_machine/vendor/process()
-    if(obj_broken)
-        return
-    if(world.time > next_hawk)
-        next_hawk = world.time + rand(3 minutes, 8 minutes)
-        if(list.held_items.len)
-            say("\the [src] has [pick(list.held_items)]")
 
 /obj/structure/fake_machine/vendor/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/coin))
@@ -242,6 +234,14 @@
 			else
 				contents += "[icon2html(I, user)] <a href='byond://?src=[REF(src)];setname=[REF(I)]'>[stars(namer)]</a> - <a href='byond://?src=[REF(src)];setprice=[REF(I)]'>[price]</a> <a href='byond://?src=[REF(src)];retrieve=[REF(I)]'>[stars("TAKE")]</a>"
 		contents += "<BR>"
+
+/obj/structure/fake_machine/vendor/process()
+    if(obj_broken)
+        return
+    if(world.time > next_hawk)
+        next_hawk = world.time + rand(3 MINUTES, 8 MINUTES)
+        if(list.held_items.len)
+            say("\the [src] has [pick(list.held_items)]")
 
 	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 400)
 	popup.set_content(contents)
