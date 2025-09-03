@@ -69,6 +69,14 @@
 	set_light(1, 1, 1, l_color = lighting_color)
 	. += mutable_appearance(icon, filled_overlay)
 
+/obj/structure/fake_machine/vendor/process()
+    if(obj_broken)
+        return
+    if(world.time > next_hawk)
+        next_hawk = world.time + rand(3 minutes, 8 minutes)
+        if(list.held_items.len)
+            say("\the [src] has [pick(list.held_items)]")
+
 /obj/structure/fake_machine/vendor/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/coin))
 		if(!lock_check())
