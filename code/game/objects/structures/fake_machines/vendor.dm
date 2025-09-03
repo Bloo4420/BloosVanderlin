@@ -21,6 +21,8 @@
 	var/filled_overlay = "vendor-gen"
 	/// Light color used when theres items inside and we are locked
 	var/lighting_color = "#cf7214"
+	/// Tracking the hawking
+	/var/next_hawk = 0
 
 /obj/structure/fake_machine/vendor/Initialize()
 	. = ..()
