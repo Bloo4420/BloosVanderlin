@@ -235,6 +235,10 @@
 				contents += "[icon2html(I, user)] <a href='byond://?src=[REF(src)];setname=[REF(I)]'>[stars(namer)]</a> - <a href='byond://?src=[REF(src)];setprice=[REF(I)]'>[price]</a> <a href='byond://?src=[REF(src)];retrieve=[REF(I)]'>[stars("TAKE")]</a>"
 		contents += "<BR>"
 
+	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 400)
+	popup.set_content(contents)
+	popup.open()
+
 /obj/structure/fake_machine/vendor/process()
     if(obj_broken)
         return
@@ -242,10 +246,6 @@
         next_hawk = world.time + rand(3 MINUTES, 8 MINUTES)
         if(list.held_items.len)
             say("\the [src] has [pick(list.held_items)]")
-
-	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 400)
-	popup.set_content(contents)
-	popup.open()
 
 /obj/structure/fake_machine/vendor/nolock
 	lock = null
