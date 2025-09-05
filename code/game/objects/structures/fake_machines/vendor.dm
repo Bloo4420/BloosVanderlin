@@ -27,12 +27,12 @@
 /obj/structure/fake_machine/vendor/Initialize()
 	. = ..()
 	update_appearance(UPDATE_ICON_STATE)
-
-/obj/structure/fake_machine/vendor/Initialize()
-	.=..()
 	START_PROCESSING(SSroguemachine, src)
-	SSroguemachine.vendor_machines += src
 
+/obj/structure/fake_machine/vendor/Destroy(force)
+	STOP_PROCESSING(SSroguemachine, src)
+	return ..()
+	
 /obj/structure/fake_machine/vendor/on_lock_add()
 	update_appearance(UPDATE_ICON_STATE)
 
@@ -249,7 +249,7 @@
         return
     if(world.time > next_hawk)
         next_hawk = world.time + rand(1 MINUTES, 2 MINUTES)
-        if(held_items.len)
+        if(length(held_items))
             say("[pick(held_items)] for sale.")
 
 /obj/structure/fake_machine/vendor/nolock

@@ -8,7 +8,6 @@ PROCESSING_SUBSYSTEM_DEF(roguemachine)
 	var/list/cameras = list()
 	var/list/scomm_machines = list()
 	var/list/stock_machines = list()
-	var/list/vendor_machines = list()
 	var/hermailermaster
 	var/list/death_queue = list()
 	var/last_death_report
