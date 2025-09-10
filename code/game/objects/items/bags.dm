@@ -158,16 +158,15 @@
 	max_integrity = 300
 	component_type = /datum/component/storage/concrete/grid/handbasket
 
-/obj/item/storage/handbasket/update_icon_state()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	var/list/things = STR.contents()
-	if(!length(things))
-		icon_state = "handbasket1"
-		w_class = WEIGHT_CLASS_NORMAL
-	if(length(things))
-		icon_state = "handbasket3"
-		w_class = WEIGHT_CLASS_BULKY
+/obj/item/storage/handbasket/update_overlays()
+    . = ..()
+    var/list/stuff = contents
+    if(!length(stuff))
+        return
+    if(locate(/obj/item/alch/herb) in stuff)
+        . += mutable_appearance(icon, "handbasketh")
+    else
+        . += mutable_appearance(icon, "handbasketf")
 
 /obj/item/storage/handbasket/attack_hand_secondary(mob/user, params)
 	if(user.get_active_held_item())
@@ -210,5 +209,6 @@
 "eflip" = 8)
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+
 
 
