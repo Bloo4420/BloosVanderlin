@@ -159,14 +159,24 @@
 	component_type = /datum/component/storage/concrete/grid/handbasket
 
 /obj/item/storage/handbasket/update_overlays()
-    . = ..()
-    var/list/stuff = contents
-    if(!length(stuff))
-        return
-    if(locate(/obj/item/alch/herb) in stuff)
-        . += mutable_appearance(icon, "handbasketh")
-    else
-        . += mutable_appearance(icon, "handbasketf")
+	. = ..()
+	var/list/stuff = contents
+	if(!length(stuff))
+		return
+	if(locate(/obj/item/reagent_containers/food/snacks/bread) in stuff)
+		. += mutable_appearance(icon, "handbasketp")
+		return
+	if(locate(/obj/item/alch/herb) in stuff)
+		.+= mutable_appearance(icon, "handbasketh")
+		return
+	if(locate(/obj/item/reagent_containers/food/snacks/produce/fruit) in stuff)
+		.+= mutable_appearance(icon, "handbasketj")
+		return
+	if(locate(/obj/item/reagent_containers/food/snacks/egg) in stuff)
+		.+= mutable_appearance(icon, "handbaskete")
+		return
+	else
+		. += mutable_appearance(icon, "handbasketf")
 
 /obj/item/storage/handbasket/attack_hand_secondary(mob/user, params)
 	if(user.get_active_held_item())
