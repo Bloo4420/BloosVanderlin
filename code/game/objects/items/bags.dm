@@ -163,17 +163,32 @@
 	var/list/stuff = contents
 	if(!length(stuff))
 		return
-	if(length(contents) >= 5)
-		if(locate(/obj/item/reagent_containers/food/snacks/bread) in stuff)
-			. += mutable_appearance(icon, "handbasketp")
-		else if(locate(/obj/item/alch/herb) in stuff)
-			. += mutable_appearance(icon, "handbasketh")
-		else if(locate(/obj/item/reagent_containers/food/snacks/produce/fruit) in stuff)
-			. += mutable_appearance(icon, "handbasketj")
-		else if(locate(/obj/item/reagent_containers/food/snacks/egg) in stuff)
-			. += mutable_appearance(icon, "handbaskete")
-		else
-			. += mutable_appearance(icon, "handbasketf")
+	var/bread = 0
+	for(var/obj/item as anything in stuff)
+		if(istype(item, /obj/item/reagent_containers/food/snacks/bread))
+			bread++
+	if(bread >= 5)
+		. += mutable_appearance(icon, "handbasketp")
+	var/herb = 0
+	for(var/obj/item as anything in stuff)
+		if(istype(item, /obj/item/alch/herb))
+			herb++
+	if(herb >= 5)
+		. += mutable_appearance(icon, "handbasketh")
+	var/fruit = 0
+	for(var/obj/item as anything in stuff)
+		if(istype(item, /obj/item/reagent_containers/food/snacks/produce/fruit))
+			fruit++
+	if(fruit >= 5)
+		. += mutable_appearance(icon, "handbasketj")
+	var/egg = 0
+	for(var/obj/item as anything in stuff)
+		if(istype(item, /obj/item/reagent_containers/food/snacks/egg))
+			egg++
+	if(egg >= 5)
+		. += mutable_appearance(icon, "handbaskete")
+	if(length(stuff) && bread < 5 && herb < 5 && fruit < 5 && egg < 5)
+		. += mutable_appearance(icon, "handbasketf")
 
 /obj/item/storage/handbasket/attack_hand_secondary(mob/user, params)
 	if(user.get_active_held_item())
