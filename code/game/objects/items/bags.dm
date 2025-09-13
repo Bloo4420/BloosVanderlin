@@ -150,7 +150,7 @@
 /obj/item/storage/handbasket
 	name = "handbasket"
 	desc = "Fibers interwoven to make a cheap, handheld storage item."
-	icon_state = "handbasket1"
+	icon_state = "handbasket"
 	icon = 'icons/roguetown/items/misc.dmi'
 	slot_flags = ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_NORMAL
@@ -173,18 +173,18 @@
 		if(!type_list[type] >= 5)
 			continue
 		if(ispath(type, /obj/item/reagent_containers/food/snacks/bread))
-			. += mutable_appearance(icon, "handbasketp")
+			. += mutable_appearance(icon, "handbasket_bread")
 			return
 		if(ispath(type, /obj/item/alch/herb))
-			. += mutable_appearance(icon, "handbasketh")
+			. += mutable_appearance(icon, "handbasket_herb")
 			return
 		if(ispath(type, /obj/item/reagent_containers/food/snacks/produce/fruit))
-			. += mutable_appearance(icon, "handbasketj")
+			. += mutable_appearance(icon, "handbasket_fruit")
 			return
 		if(ispath(type, /obj/item/reagent_containers/food/snacks/egg))
-			. += mutable_appearance(icon, "handbaskete")
+			. += mutable_appearance(icon, "handbasket_egg")
 			return
-	. += mutable_appearance(icon, "handbasketf")
+		. += mutable_appearance(icon, "handbasket_generic")
 
 /obj/item/storage/handbasket/attack_hand_secondary(mob/user, params)
 	if(user.get_active_held_item())
