@@ -161,34 +161,30 @@
 /obj/item/storage/handbasket/update_overlays()
 	. = ..()
 	var/list/stuff = contents
-	if(!length(stuff))
+	if(!length(stuff) >= 5)
 		return
-	var/bread = 0
+	// Assoc list of type to count
+	var/list/type_list = list()
 	for(var/obj/item as anything in stuff)
-		if(istype(item, /obj/item/reagent_containers/food/snacks/bread))
-			bread++
-	if(bread >= 5)
-		. += mutable_appearance(icon, "handbasketp")
-	var/herb = 0
-	for(var/obj/item as anything in stuff)
-		if(istype(item, /obj/item/alch/herb))
-			herb++
-	if(herb >= 5)
-		. += mutable_appearance(icon, "handbasketh")
-	var/fruit = 0
-	for(var/obj/item as anything in stuff)
-		if(istype(item, /obj/item/reagent_containers/food/snacks/produce/fruit))
-			fruit++
-	if(fruit >= 5)
-		. += mutable_appearance(icon, "handbasketj")
-	var/egg = 0
-	for(var/obj/item as anything in stuff)
-		if(istype(item, /obj/item/reagent_containers/food/snacks/egg))
-			egg++
-	if(egg >= 5)
-		. += mutable_appearance(icon, "handbaskete")
-	if(length(stuff) && bread < 5 && herb < 5 && fruit < 5 && egg < 5)
-		. += mutable_appearance(icon, "handbasketf")
+		if(!type_list[item.type])
+			type_list[item.type] = 0
+		type_list[item.type]++
+	for(var/type as anything in type_list)
+		if(!type_list[type] >= 5)
+			continue
+		if(ispath(type, /obj/item/reagent_containers/food/snacks/bread))
+			. += mutable_appearance(icon, "handbasketp")
+			return
+		if(ispath(type, /obj/item/alch/herb))
+			. += mutable_appearance(icon, "handbasketh")
+			return
+		if(ispath(type, /obj/item/reagent_containers/food/snacks/produce/fruit))
+			. += mutable_appearance(icon, "handbasketj")
+			return
+		if(ispath(type, /obj/item/reagent_containers/food/snacks/egg))
+			. += mutable_appearance(icon, "handbaskete")
+			return
+	. += mutable_appearance(icon, "handbasketf")
 
 /obj/item/storage/handbasket/attack_hand_secondary(mob/user, params)
 	if(user.get_active_held_item())
