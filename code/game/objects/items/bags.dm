@@ -161,7 +161,7 @@
 /obj/item/storage/handbasket/update_overlays()
 	. = ..()
 	var/list/stuff = contents
-	if(!length(stuff) >= 5)
+	if(!length(stuff))
 		return
 	// Assoc list of type to count
 	var/list/type_list = list()
@@ -170,7 +170,7 @@
 			type_list[item.type] = 0
 		type_list[item.type]++
 	for(var/type as anything in type_list)
-		if(!type_list[type] >= 5)
+		if(type_list[type] < 5)
 			continue
 		if(ispath(type, /obj/item/reagent_containers/food/snacks/bread))
 			. += mutable_appearance(icon, "handbasket_bread")
@@ -184,7 +184,7 @@
 		if(ispath(type, /obj/item/reagent_containers/food/snacks/egg))
 			. += mutable_appearance(icon, "handbasket_egg")
 			return
-		. += mutable_appearance(icon, "handbasket_generic")
+	. += mutable_appearance(icon, "handbasket_generic")
 
 /obj/item/storage/handbasket/attack_hand_secondary(mob/user, params)
 	if(user.get_active_held_item())
