@@ -5,7 +5,7 @@
 	minimum_skill_level = 1 // this is what locks the recipes to only bombcrafters
 	category = "Bombs"
 
-/datum/repeatable_crafting_recipe/bomb/smokebomb
+/datum/repeatable_crafting_recipe/bomb/smokebomba
 	name = "smoke bomb"
 
 	requirements = list(
