@@ -17,7 +17,7 @@
 				/mob/living/simple_animal/hostile/retaliate/bigrat = 20,
 				/mob/living/simple_animal/hostile/retaliate/spider = 80,
 				/mob/living/carbon/human/species/goblin/npc/ambush/sea = 50,
-				/mob/living/simple_animal/hostile/retaliate/troll/bog = 35,
+				/mob/living/simple_animal/hostile/retaliate/troll/bog = 5,
 				new /datum/ambush_config/bog_guard_deserters = 50,
 				new /datum/ambush_config/bog_guard_deserters/hard = 25,
 				new /datum/ambush_config/mirespiders_ambush = 110,

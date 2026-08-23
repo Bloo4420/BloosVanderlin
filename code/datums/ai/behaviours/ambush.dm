@@ -1,6 +1,6 @@
 /datum/ai_behavior/gator_ambush
 	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_MOVE_AND_PERFORM
-	var/ambush_damage_bonus = 10 // Extra damage for ambush attacks
+	var/ambush_damage_bonus = 5 // Extra damage for ambush attacks
 
 /datum/ai_behavior/gator_ambush/setup(datum/ai_controller/controller, target_key)
 	. = ..()

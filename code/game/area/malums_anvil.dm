@@ -24,7 +24,7 @@
 				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 30,
 				/mob/living/carbon/human/species/rousman/ambush = 30,
 				/mob/living/carbon/human/species/orc/ambush = 20,
-				/mob/living/simple_animal/hostile/retaliate/troll/cave = 10)
+				/mob/living/simple_animal/hostile/retaliate/troll/cave = 5)
 
 /area/under/mountains/anvil/upper
 	name = "malum's anvil under upper caves"

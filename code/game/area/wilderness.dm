@@ -16,11 +16,11 @@
 
 	ambush_mobs = list(
 		new /datum/ambush_config/wolf_pack = 15,
-		new /datum/ambush_config/lone_troll = 10,
-		new /datum/ambush_config/troll_and_wolves = 8,
+		new /datum/ambush_config/lone_troll = 5,
+		new /datum/ambush_config/troll_and_wolves = 5,
 		new /datum/ambush_config/goblin_ambush_party = 15,
 		new /datum/ambush_config/goblin_raid_party = 8,
-		new /datum/ambush_config/raccoon_swarm = 20,
+		new /datum/ambush_config/raccoon_swarm = 25,
 		new /datum/ambush_config/mole_pack = 15,
 		new /datum/ambush_config/deserter_patrol = 12,
 		new /datum/ambush_config/highwayman_duo = 10,
